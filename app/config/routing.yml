@@ -1,0 +1,14 @@
+LombardBundle_admin_lombard_bundle_Status:
+    resource: "@LombardBundle/Controller/Status/"
+    type:     admingenerator
+    prefix:   /admin/lombard_bundle/Status
+
+LombardBundle_admin_lombard_bundle_Group:
+    resource: "@LombardBundle/Controller/Group/"
+    type:     admingenerator
+    prefix:   /admin/lombard_bundle/Group
+
+lombard:
+    resource: "@LombardBundle/Resources/config/routing.yml"
+    prefix:   /
+
