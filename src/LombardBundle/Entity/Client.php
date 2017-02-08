@@ -58,6 +58,9 @@ class Client {
     private $idnumber;
     
 
+    public function __toString() {
+        return $this->fio;
+    }
     /**
      * Get id
      *

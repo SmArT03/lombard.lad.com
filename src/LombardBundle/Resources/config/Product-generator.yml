@@ -1,0 +1,65 @@
+generator: admingenerator.generator.doctrine
+params:
+    model: LombardBundle\Entity\Product
+    namespace_prefix: 
+    concurrency_lock: ~
+    bundle_name: LombardBundle
+    pk_requirement: ~
+    fields:
+        name:
+            label: Наименование
+        group:
+            label: Группа товара
+        description:
+            label: Описание
+        createdAt:
+            label: Создан
+        updatedAt:
+            label: Обновлен
+    object_actions:
+        delete: ~
+    batch_actions:
+        delete: ~
+builders:
+    list:
+        params:
+            title: Товары
+            display: [name, group, description, createdAt, updatedAt]
+            actions:
+                new: ~
+            object_actions:
+                edit: ~
+                delete: ~
+            filters:  [name, group]
+            filtersMode: top
+    excel:
+        params: ~
+        filename: ~
+        filetype: ~
+    new:
+        params:
+            title: Новый товар
+            display: [name, group, description]
+            actions:
+                save: ~
+                list: ~
+    edit:
+        params:
+            title: "Вы редактируете товар \"%object%\"|{ %object%: Product.name }|"
+            display: [name, group, description]
+            actions:
+                save: ~
+                list: ~
+    show:
+        params:
+            title: "Вы просматриваете товар \"%object%\"|{ %object%: Product.name }|"
+            display: [name, group, description]
+            actions:
+                list: ~
+                new: ~
+    actions:
+        params:
+            object_actions:
+                delete: ~
+            batch_actions:
+                delete: ~

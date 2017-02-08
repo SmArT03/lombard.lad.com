@@ -1,0 +1,71 @@
+generator: admingenerator.generator.doctrine
+params:
+    model: LombardBundle\Entity\Client
+    namespace_prefix: 
+    concurrency_lock: ~
+    bundle_name: LombardBundle
+    pk_requirement: ~
+    fields: 
+        fio:
+            label: ФИО
+        passport:
+            label: Паспорт
+        birthday:
+            label: Дата рождения
+        adress:
+            label: Адресс
+        phone:
+            label: Номер телефона
+        idnumber:
+            label: Идентификационный код
+        createdAt:
+            label: Создан
+        updatedAt:
+            label: Обновлен
+    object_actions:
+        delete: ~
+    batch_actions:
+        delete: ~
+builders:
+    list:
+        params:
+            title: Клиенты
+            display: [fio, passport, birthday, adress, phone, idnumber, createdAt, updatedAt]
+            actions:
+                new: ~
+            object_actions:
+                edit: ~
+                delete: ~
+            filters:  [fio, passport, birthday, adress, phone, idnumber]
+            filtersMode: top
+    excel:
+        params: ~
+        filename: ~
+        filetype: ~
+    new:
+        params:
+            title: Добавление нового клиента
+            display: [fio, passport, birthday, adress, phone, idnumber]
+            actions:
+                save: ~
+                list: ~
+    edit:
+        params:
+            title: "Вы редактируете клиента \"%object%\"|{ %object%: Client.fio}|"
+            display: [fio, passport, birthday, adress, phone, idnumber]
+            actions:
+                save: ~
+                list: ~
+    show:
+        params:
+            title: "Вы просматриваете клиента \"%object%\"|{ %object%: Client.fio}|"
+            display: [fio, passport, birthday, adress, phone, idnumber]
+            actions:
+                list: ~
+                new: ~
+    actions:
+        params:
+            object_actions:
+                delete: ~
+            batch_actions:
+                delete: ~

@@ -1,3 +1,18 @@
+LombardBundle_admin_lombard_bundle_Deposit:
+    resource: "@LombardBundle/Controller/Deposit/"
+    type:     admingenerator
+    prefix:   /
+
+LombardBundle_admin_lombard_bundle_Client:
+    resource: "@LombardBundle/Controller/Client/"
+    type:     admingenerator
+    prefix:   /admin/lombard_bundle/Client
+
+LombardBundle_admin_lombard_bundle_Product:
+    resource: "@LombardBundle/Controller/Product/"
+    type:     admingenerator
+    prefix:   /admin/lombard_bundle/Product
+
 LombardBundle_admin_lombard_bundle_Status:
     resource: "@LombardBundle/Controller/Status/"
     type:     admingenerator
@@ -7,8 +22,4 @@ LombardBundle_admin_lombard_bundle_Group:
     resource: "@LombardBundle/Controller/Group/"
     type:     admingenerator
     prefix:   /admin/lombard_bundle/Group
-
-lombard:
-    resource: "@LombardBundle/Resources/config/routing.yml"
-    prefix:   /
 

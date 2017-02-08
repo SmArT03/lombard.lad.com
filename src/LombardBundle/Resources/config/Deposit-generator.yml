@@ -1,0 +1,80 @@
+generator: admingenerator.generator.doctrine
+params:
+    model: LombardBundle\Entity\Deposit
+    namespace_prefix: 
+    concurrency_lock: ~
+    bundle_name: LombardBundle
+    pk_requirement: ~
+    fields: 
+        id:
+            label: №
+        date:
+            label: Дата
+        inpPrice: 
+            label: Оценочная стоимость
+        percent:
+            label: Процент ломбарду
+        outPrice:
+            label: Продажная стоимость
+        depositTerm:
+            label: Срок
+        status:
+            label: Статус
+        client:
+            label: Клиент
+        product:
+            label: Товар
+        createdAt:
+            label: Создан
+        updatedAt:
+            label: Обновлен
+    object_actions:
+        delete: ~
+    batch_actions:
+        delete: ~
+builders:
+    list:
+        params:
+            title: Депозиты
+            display: [id, date,inpPrice, percent, outPrice, depositTerm, status, client, product, createdAt, updatedAt]
+            fields:
+                percent:
+                    sortable: false
+            actions:
+                new: ~
+            object_actions:
+                edit: ~
+                delete: ~
+            filters:  [id, date, status, client, product]
+            filtersMode: top
+    excel:
+        params: ~
+        filename: ~
+        filetype: ~
+    new:
+        params:
+            title: Новый депозит
+            display: [id, date,inpPrice, outPrice, depositTerm, status, client, product]
+            actions:
+                save: ~
+                list: ~
+    edit:
+        params:
+            title: "Вы редактируете депозит номер \"%object%\"|{ %object%: Deposit.id }| от клиента \"%object%\"|{ %object%: Deposit.client }|"
+            display: ~
+            actions:
+                save: ~
+                list: ~
+    show:
+        params:
+            title: "Вы просматриваете депозит номер \"%object%\"|{ %object%: Deposit.id }|"
+            display: ~
+            actions:
+                list: ~
+                new: ~
+    actions:
+        params:
+            object_actions:
+                delete: ~
+            batch_actions:
+                delete: ~

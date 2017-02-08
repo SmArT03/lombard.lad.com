@@ -37,6 +37,7 @@ class Deposit {
      */
     private $inp_price;
     
+       
     /**
      * @ORM\Column(type="decimal", precision=8, scale=2, nullable=false)
      */
@@ -120,6 +121,8 @@ class Deposit {
         return $this;
     }
 
+   
+    
     /**
      * Get inp_price
      *
@@ -127,7 +130,16 @@ class Deposit {
      */
     public function getInpPrice()
     {
-        return $this->inp_price;
+        return $this->inp_price.' грн';
+    }
+     
+    /**
+     * Get inp_price
+     *
+     * @return string 
+     */
+    public function getPercent() {
+        return $this->inp_price*0.1.' грн';
     }
     
     /**
@@ -150,9 +162,9 @@ class Deposit {
      */
     public function getOutPrice()
     {
-        return $this->out_price;
+        return $this->out_price.' грн';
     }
-
+    
     /**
      * Set deposit_term
      *

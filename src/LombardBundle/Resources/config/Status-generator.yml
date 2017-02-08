@@ -5,7 +5,13 @@ params:
     concurrency_lock: ~
     bundle_name: LombardBundle
     pk_requirement: ~
-    fields: ~
+    fields:
+        name:
+            label: Наименование
+        createdAt:
+            label: Создан
+        updatedAt:
+            label: Обновлен
     object_actions:
         delete: ~
     batch_actions:
@@ -13,35 +19,37 @@ params:
 builders:
     list:
         params:
-            title: List for LombardBundle
-            display: ~
+            title: Статусы
+            display: [name, createdAt, updatedAt]
             actions:
                 new: ~
             object_actions:
                 edit: ~
                 delete: ~
+            filters:  [name]
+            filtersMode: top
     excel:
         params: ~
         filename: ~
         filetype: ~
     new:
         params:
-            title: New object for LombardBundle
-            display: ~
+            title: Новый статус
+            display: [name]
             actions:
                 save: ~
                 list: ~
     edit:
         params:
-            title: "You're editing the object \"%object%\"|{ %object%: Status.title }|"
-            display: ~
+            title: "Вы редактируете статус \"%object%\"|{ %object%: Status.name }|"
+            display: [name]
             actions:
                 save: ~
                 list: ~
     show:
         params:
-            title: "You're viewing the object \"%object%\"|{ %object%: Status.title }|"
-            display: ~
+            title: "Вы просматриваете статус \"%object%\"|{ %object%: Status.name }|"
+            display: [name]
             actions:
                 list: ~
                 new: ~
