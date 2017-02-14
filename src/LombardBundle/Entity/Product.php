@@ -28,7 +28,7 @@ class Product {
     /**
      * 
      * @ORM\ManyToOne(targetEntity="Group")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
      *
      */
     protected $group;
@@ -45,7 +45,11 @@ class Product {
 
 
     public function __toString() {
-        return $this->name;
+        try {
+            return $this->name;
+        } catch (Exception $exception) {
+            return 'товар удален';
+        }
     }
     /**
      * Get id

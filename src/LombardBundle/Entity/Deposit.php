@@ -44,14 +44,16 @@ class Deposit {
     private $out_price;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=false)
+     * @ORM\Column(type="date", nullable=false)
+     *   
+     * @Assert\Date()
      */
     private $deposit_term;
     
     /**
      * 
      * @ORM\ManyToOne(targetEntity="Status")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE", )
      *
      */
     protected $status;
@@ -107,31 +109,6 @@ class Deposit {
     {
         return $this->date;
     }
-
-    /**
-     * Set inp_price
-     *
-     * @param string $inp_price
-     * @return Deposit
-     */
-    public function setInpPrice($inp_price)
-    {
-        $this->inp_price = $inp_price;
-
-        return $this;
-    }
-
-   
-    
-    /**
-     * Get inp_price
-     *
-     * @return string 
-     */
-    public function getInpPrice()
-    {
-        return $this->inp_price.' грн';
-    }
      
     /**
      * Get inp_price
@@ -139,54 +116,9 @@ class Deposit {
      * @return string 
      */
     public function getPercent() {
-        return $this->inp_price*0.1.' грн';
+        return $this->inp_price*0.1;
     }
     
-    /**
-     * Set out_price
-     *
-     * @param string $out_price
-     * @return Deposit
-     */
-    public function setOutPrice($out_price)
-    {
-        $this->out_price = $out_price;
-
-        return $this;
-    }
-
-    /**
-     * Get out_price
-     *
-     * @return string 
-     */
-    public function getOutPrice()
-    {
-        return $this->out_price.' грн';
-    }
-    
-    /**
-     * Set deposit_term
-     *
-     * @param string $depositTerm
-     * @return Deposit
-     */
-    public function setDepositTerm($depositTerm)
-    {
-        $this->deposit_term = $depositTerm;
-
-        return $this;
-    }
-
-    /**
-     * Get deposit_term
-     *
-     * @return string 
-     */
-    public function getDepositTerm()
-    {
-        return $this->deposit_term;
-    }
     
 
     /**
@@ -256,5 +188,77 @@ class Deposit {
     public function getProduct()
     {
         return $this->product;
+    }
+
+    /**
+     * Set inpPrice
+     *
+     * @param string $inpPrice
+     *
+     * @return Deposit
+     */
+    public function setInpPrice($inpPrice)
+    {
+        $this->inp_price = $inpPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get inpPrice
+     *
+     * @return string
+     */
+    public function getInpPrice()
+    {
+        return $this->inp_price;
+    }
+
+    /**
+     * Set outPrice
+     *
+     * @param string $outPrice
+     *
+     * @return Deposit
+     */
+    public function setOutPrice($outPrice)
+    {
+        $this->out_price = $outPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get outPrice
+     *
+     * @return string
+     */
+    public function getOutPrice()
+    {
+        return $this->out_price;
+    }
+
+    /**
+     * Set depositTerm
+     *
+     * @param \DateTime $depositTerm
+     *
+     * @return Deposit
+     */
+    public function setDepositTerm($depositTerm)
+    {
+        $this->deposit_term = $depositTerm;
+
+        return $this;
+    }
+
+    /**
+     * Get depositTerm
+     *
+     * @return \DateTime
+     */
+    public function getDepositTerm()
+    {
+        return $this->deposit_term->format("Y-m-d");
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lombard\LombardBundle\Entity;
+namespace LombardBundle\Entity;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Doctrine\ORM\Mapping as ORM;
@@ -35,17 +35,28 @@ class Deposit {
     /**
      * @ORM\Column(type="decimal", precision=8, scale=2, nullable=false)
      */
-    private $price;
+    private $inp_price;
+    
+       
+    /**
+     * @ORM\Column(type="decimal", precision=8, scale=2, nullable=false)
+     */
+    private $out_price;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="date", nullable=false)
+     *   
+     * @Assert\Date()
      */
     private $deposit_term;
     
     /**
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * 
+     * @ORM\ManyToOne(targetEntity="Status")
+     * @ORM\JoinColumn(nullable=false)
+     *
      */
-    private $status;
+    protected $status;
 
 
     /**
@@ -98,60 +109,25 @@ class Deposit {
     {
         return $this->date;
     }
-
+     
     /**
-     * Set price
-     *
-     * @param string $price
-     * @return Deposit
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
+     * Get inp_price
      *
      * @return string 
      */
-    public function getPrice()
-    {
-        return $this->price;
+    public function getPercent() {
+        return $this->inp_price*0.1;
     }
-
-    /**
-     * Set deposit_term
-     *
-     * @param string $depositTerm
-     * @return Deposit
-     */
-    public function setDepositTerm($depositTerm)
-    {
-        $this->deposit_term = $depositTerm;
-
-        return $this;
-    }
-
-    /**
-     * Get deposit_term
-     *
-     * @return string 
-     */
-    public function getDepositTerm()
-    {
-        return $this->deposit_term;
-    }
+    
+    
 
     /**
      * Set status
      *
-     * @param string $status
+     * @param \LombardBundle\Entity\Status $status
      * @return Deposit
      */
-    public function setStatus($status)
+    public function setStatus(\LombardBundle\Entity\Status $status)
     {
         $this->status = $status;
 
@@ -161,20 +137,20 @@ class Deposit {
     /**
      * Get status
      *
-     * @return string 
+     * @return \LombardBundle\Entity\Status 
      */
     public function getStatus()
     {
         return $this->status;
     }
-
+    
     /**
      * Set client
      *
-     * @param \Lombard\LombardBundle\Entity\Client $client
+     * @param \LombardBundle\Entity\Client $client
      * @return Deposit
      */
-    public function setClient(\Lombard\LombardBundle\Entity\Client $client)
+    public function setClient(\LombardBundle\Entity\Client $client)
     {
         $this->client = $client;
 
@@ -184,7 +160,7 @@ class Deposit {
     /**
      * Get client
      *
-     * @return \Lombard\LombardBundle\Entity\Client 
+     * @return \LombardBundle\Entity\Client 
      */
     public function getClient()
     {
@@ -194,10 +170,10 @@ class Deposit {
     /**
      * Set product
      *
-     * @param \Lombard\LombardBundle\Entity\Product $product
+     * @param \LombardBundle\Entity\Product $product
      * @return Deposit
      */
-    public function setProduct(\Lombard\LombardBundle\Entity\Product $product)
+    public function setProduct(\LombardBundle\Entity\Product $product)
     {
         $this->product = $product;
 
@@ -207,7 +183,7 @@ class Deposit {
     /**
      * Get product
      *
-     * @return \Lombard\LombardBundle\Entity\Product 
+     * @return \LombardBundle\Entity\Product 
      */
     public function getProduct()
     {

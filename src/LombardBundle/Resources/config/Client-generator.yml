@@ -51,14 +51,14 @@ builders:
                 list: ~
     edit:
         params:
-            title: "Вы редактируете клиента \"%object%\"|{ %object%: Client.fio}|"
+            title: "Вы редактируете клиента \"%object%\"|{ %object%: Client.fio }|"
             display: [fio, passport, birthday, adress, phone, idnumber]
             actions:
                 save: ~
                 list: ~
     show:
         params:
-            title: "Вы просматриваете клиента \"%object%\"|{ %object%: Client.fio}|"
+            title: "Вы просматриваете клиента \"%object%\"|{ %object%: Client.fio }|"
             display: [fio, passport, birthday, adress, phone, idnumber]
             actions:
                 list: ~

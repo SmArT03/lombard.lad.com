@@ -26,12 +26,17 @@ class Client {
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=false)
+     * @ORM\Column(type="string", length=45, nullable=false)
      */
     private $fio;
     
     /**
      * @ORM\Column(type="string", length=8, nullable=false)
+     * @Assert\Regex(
+     *     pattern="/^[\x{0410}-\x{042F}]{2}\d{6}$/u",
+     *     match=true,
+     *     message="Проверьте правильность написания паспорта(вида МТ821484)"
+     * )
      */
     private $passport;
     
@@ -43,17 +48,27 @@ class Client {
     private $birthday;
     
     /**
-     * @ORM\Column(type="string", length=100, nullable=false)
+     * @ORM\Column(type="string", length=80, nullable=false)
      */
     private $adress;
 
     /**
      * @ORM\Column(type="string", length=12, nullable=false)
+     * @Assert\Regex(
+     *     pattern="/^(80|\+380|0)\d{9}$/",
+     *     match=true,
+     *     message="Проверьте правильность написания номера"
+     * )
      */
     private $phone;
     
     /**
      * @ORM\Column(type="string", length=12, nullable=false)
+     * @Assert\Regex(
+     *     pattern="/^\d{10}$/",
+     *     match=true,
+     *     message="Проверьте правильность идент. кода"
+     * )
      */
     private $idnumber;
     

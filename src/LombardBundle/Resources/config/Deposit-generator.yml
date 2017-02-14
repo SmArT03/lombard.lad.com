@@ -9,15 +9,15 @@ params:
         id:
             label: №
         date:
-            label: Дата
+            label: Дата создания
         inpPrice: 
-            label: Оценочная стоимость
+            label: Оценочная стоимость, грн
         percent:
-            label: Процент ломбарду
+            label: Процент ломбарду, грн
         outPrice:
-            label: Продажная стоимость
+            label: Продажная стоимость, грн
         depositTerm:
-            label: Срок
+            label: Срок депозита
         status:
             label: Статус
         client:
@@ -54,21 +54,31 @@ builders:
     new:
         params:
             title: Новый депозит
-            display: [id, date,inpPrice, outPrice, depositTerm, status, client, product]
+            display: [id, date, status, client, product]
             actions:
                 save: ~
                 list: ~
     edit:
         params:
-            title: "Вы редактируете депозит номер \"%object%\"|{ %object%: Deposit.id }| от клиента \"%object%\"|{ %object%: Deposit.client }|"
-            display: ~
+            title: "Вы редактируете депозит номер %object%|{ %object%: Deposit.id }|"
+            display: [date,  status, client, product]
             actions:
                 save: ~
                 list: ~
+            fields: 
+                status:   
+                    addFormOptions:
+                        required: true
+                client:   
+                    addFormOptions:
+                        required: true
+                product:   
+                    addFormOptions:
+                        required: true
     show:
         params:
-            title: "Вы просматриваете депозит номер \"%object%\"|{ %object%: Deposit.id }|"
-            display: ~
+            title: "Вы просматриваете депозит номер %object%|{ %object%: Deposit.id }|"
+            display: [date,  status, client, product]
             actions:
                 list: ~
                 new: ~
